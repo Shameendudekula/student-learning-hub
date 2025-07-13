@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Learning Hub</title>
+  <link rel="stylesheet" href="sty.css" />
+</head>
+<body>
+  <!-- Welcome -->
+  <section id="welcomePage" role="main" aria-label="Welcome to BrightPath Student Learning Hub">
+    <div id="welcomeOverlay"></div>
+    <div id="welcomeContent">
+      <h1> Student Learning Hub</h1>
+      <p>
+        Empowering students in 6th to 10th grades with free books and resources. 
+       <br />
+       <br />
+        <h3>"Dream big, learn boldly, and achieve beyond limits—your journey starts here."</h3>
+      </p>
+      <button id="enterBtn" aria-label="Enter platform to access educational resources">Enter Platform</button>
+      <section id="welcomeResourcesSection" style="margin-top:2rem; max-width:700px;">
+        <div id="welcomeResourcesGrid" class="resources-grid" aria-live="polite" aria-label="Educational resources list"></div>
+      </section>
+    </div>
+  </section>
+  
+
+  <!-- Main App -->
+  <section id="mainApp" aria-label="Educational resources platform content" tabindex="0" class="hidden">
+    <header>
+      <button id="backBtn" aria-label="Go back to welcome page" class="icon-button" tabindex="0">
+        ← Back
+      </button>
+      <div class="logo" aria-label="Platform name">Student Learning Hub</div>
+      <div><button id="loginBtn" aria-haspopup="dialog" aria-controls="loginModal">Login</button>
+        <button id="signupBtn" aria-haspopup="dialog" aria-controls="signupModal">Sign Up</button>
+      </div>
+      
+    </header>
+
+   <!-- About Section -->
+<div class="container">
+  <div class="box">
+      <h2>About Us</h2>
+      <p>The Student Learning Hub is dedicated to providing a comprehensive platform for students in grades 6 to 10. Our mission is to empower students with the resources they need to succeed academically and personally. We believe that every student deserves access to quality educational materials, regardless of their background.</p>
+  </div>
+  <div class="box">
+      <h2>Our Mission</h2>
+      <p>To empower students by providing free access to educational resources, fostering a love for learning, and supporting their academic journey.</p>
+  </div>
+  <div class="box">
+      <h2>Our Vision</h2>
+      <p>To be a leading platform that transforms the educational experience for students, making learning accessible, engaging, and effective.</p>
+  </div>
+  <div class="box">
+      <h2>Our Values</h2>
+      <p>Inclusivity, integrity, innovation, and collaboration in all our services.</p>
+  </div>
+  <div class="box">
+      <h2>What We Offer</h2>
+      <p>At the Student Learning Hub, we provide a variety of resources to enhance the learning experience for students:
+
+        <h3>Teacher Profiles:</h3> Students can view profiles of qualified teachers, including their specializations, teaching preferences, and contact information. This allows students to connect with teachers for online classes to clarify doubts and enhance their understanding of subjects.
+        <h3>Books:</h3> We offer a wide range of books covering various subjects and grade levels, ensuring that students have access to quality educational materials.
+        <h3>Question Banks:</h3> Our platform includes question banks for different subjects, helping students prepare for exams and practice their skills effectively.
+        </p>
+  </div>
+  
+</div>
+<div id="appContainer">
+  <aside id="sidebar" aria-label="Select your class and subjects" tabindex="0" class="hidden">
+    <div class="section-title">Classes</div>
+    <ul id="classList" role="list" aria-label="Classes selection">
+      <li><label><input type="checkbox" data-class="6" /> 6th Grade</label></li>
+      <li><label><input type="checkbox" data-class="7" /> 7th Grade</label></li>
+      <li><label><input type="checkbox" data-class="8" /> 8th Grade</label></li>
+      <li><label><input type="checkbox" data-class="9" /> 9th Grade</label></li>
+      <li><label><input type="checkbox" data-class="10" /> 10th Grade</label></li>
+    </ul>
+
+    <div class="section-title">Subjects</div>
+    <ul id="subjectList" role="list" aria-label="Subjects selection">
+      <li><label><input type="checkbox" data-subject="Mathematics" /> Mathematics</label></li>
+      <li><label><input type="checkbox" data-subject="Science" /> Science</label></li>
+      <li><label><input type="checkbox" data-subject="English" /> English</label></li>
+      <li><label><input type="checkbox" data-subject="History" /> History</label></li>
+      <li><label><input type="checkbox" data-subject="Geography" /> Geography</label></li>
+    </ul>
+    <button id="filterBtn">Apply Filters</button>
+  </aside>
+
+
+  <main id="mainContent" tabindex="0" aria-label="Educational resources list">
+  <section id="resourcesGrid" class="resources-grid" aria-live="polite" aria-label="Educational resources list"></section>
+    </main>
+    </div>
+   <footer>
+   <p>
+      &copy; 2025 Student Learning Hub. Empowering education everywhere. 
+   </p>
+    
+   </footer>
+  </section>
+
+
+     
+  <!-- Login Modal -->
+  <div id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginLabel" tabindex="-1" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="Close login modal">×</button>
+      <h2 id="loginLabel">Login</h2>
+      <div>
+        <button id="studentLoginBtn">Student Login</button>
+        <button id="teacherLoginBtn">Teacher Login</button>
+      </div>
+      <form id="loginForm" novalidate>
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" name="loginEmail" autocomplete="email" required />
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" name="loginPassword" autocomplete="current-password" required />
+        <button type="submit" class="submit-btn">Login</button>
+        <center>  
+          <p>Don't have an account?<a href="#signup" id="loginToSignup">signup</a></p>
+        </center>
+        <center>  
+          <p><a href="#forgotPassword" id="forgotPasswordLink">Forgot Password?</a></p>
+        </center>
+        
+      </form>
+    </div>
+  </div>
+<!-- ForgotPassword Modal -->
+ <div id="forgotPasswordModal" class="modal hidden">
+  <div class="modal-content">
+    <button class="close-btn" aria-label="Close Forgot Password Modal">×</button>
+    <h2>Forgot Password</h2>
+    <p>Enter your registered email address, and we'll help you reset your password.</p>
+    <form id="forgotPasswordForm">
+      <label for="forgotEmail">Email</label>
+      <input type="email" id="forgotEmail" name="forgotEmail" required />
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+</div>
+<!-- resetPassword Modal -->
+<div id="resetPasswordModal" class="modal hidden">
+  <div class="modal-content">
+    <h2>Reset Password</h2>
+    <form id="resetPasswordForm">
+      <label for="newPassword">New Password:</label>
+      <input type="password" id="newPassword" name="newPassword" required />
+      <button type="submit">Reset Password</button>
+    </form>
+  </div>
+</div>
+
+
+
+<div id="modalBackdrop" class="modal hidden">
+  <div class="modal-content">
+    <button class="close-btn">×</button>
+    <!-- Add content if needed -->
+  </div>
+</div>
+
+<div id="signupModalBackdrop" class="modal hidden">
+  <div class="modal-content">
+    <button class="close-btn">×</button>
+    <!-- Add content if needed -->
+  </div>
+</div>
+
+
+<!-- Signup Modal -->
+<div id="signupModal" role="dialog" aria-modal="true" aria-labelledby="signupLabel" tabindex="-1" class="modal hidden">
+  <div class="modal-content">
+    <button class="close-btn" aria-label="Close signup modal">×</button>
+    <h2 id="signupLabel">Sign Up</h2>
+    <div>
+      <button id="studentSignupBtn">Student Sign Up</button>
+      <button id="teacherSignupBtn">Teacher Sign Up</button>
+    </div>
+    <form id="signupForm" novalidate>
+      <label for="signupName">Full Name</label>
+      <input type="text" id="signupName" name="signupName" autocomplete="name" required />
+      <label for="signupEmail">Email</label>
+      <input type="email" id="signupEmail" name="signupEmail" autocomplete="email" required />
+      <label for="signupPassword">Password</label>
+      <input type="password" id="signupPassword" name="signupPassword" autocomplete="new-password" required />
+      
+      <fieldset id="teacherFields">
+        <label for="teacherSpecialization">Specialization</label>
+        <input type="text" id="teacherSpecialization" name="teacherSpecialization" required /><br>
+        <label for="profesion">Profession</label>
+        <input type="text" id="profesion" name="profesion" required /><br>
+        <div>
+          <legend>Select your preferred class (for teacherFields)</legend>
+          <label><input type="checkbox" name="class" value="6th" /> 6th</label>
+          <label><input type="checkbox" name="class" value="7th" /> 7th</label>
+          <label><input type="checkbox" name="class" value="8th" /> 8th</label>
+          <label><input type="checkbox" name="class" value="9th" /> 9th</label>
+          <label><input type="checkbox" name="class" value="10th" /> 10th</label>
+        </div>
+        
+        <div>
+          <legend>Subjects of Interest (for teacherFields)</legend>
+          <label><input type="checkbox" name="subjects" value="Mathematics" /> Mathematics</label>
+          <label><input type="checkbox" name="subjects" value="Science" /> Science</label>
+          <label><input type="checkbox" name="subjects" value="English" /> English</label>
+          <label><input type="checkbox" name="subjects" value="History" /> History</label>
+          <label><input type="checkbox" name="subjects" value="Geography" /> Geography</label>
+        </div>
+      </fieldset>
+      
+      <button type="submit" class="submit-btn">Sign Up</button>
+      <center>  
+        
+            <p>Already have an account?<a href="#login" id="signupToLogin">Login</a></p>
+        
+      </center>
+      
+    </form>
+  </div>
+</div>
+
+
+  <script src="scri.js"></script>
+</body>
+</html>

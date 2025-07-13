@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="teacher.css">
+</head>
+<body>
+  
+  <section id="welcomeSection">
+    <header class="header">
+      <div class="logo">Student Learning Hub</div>
+    </header>
+
+    <h1 id="welcomeText">Welcome!</h1>
+    <button id="logoutBtn">Logout</button>
+    <button id="enterAppBtn">Enter Learning Hub</button>
+  </section>
+
+
+  <section id="mainApp" class="hidden">
+    <header>
+      <button id="backBtn" class="icon-button">← Back</button>
+      <div class="logo">Student Learning Hub</div>
+      <nav class="header-nav">
+        <button id="menuToggleBtn" class="icon-button" title="Toggle Filters">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 5h18v2l-7 7v5l-4-2v-3L3 7V5z" />
+          </svg>
+        </button>
+        <button id="dashboardToggleBtn" class="icon-button" title="Toggle Dashboard">☰</button>
+        <span id="userWelcome" hidden>Welcome, <strong id="userNameDisplay"></strong></span>
+        <div class="search-container" id="searchContainerHeader">
+          <input type="search" id="searchInput" placeholder="Search materials..." />
+        </div>
+      </nav>
+    </header>
+  <div class="chatBox collapsed" id="chatBox">
+  <div class="chatBoxHeader">
+    <span>Chat</span>
+    <button id="toggleChat" class="chatToggleBtn">🔽</button>
+  </div>
+
+  <div class="chatBody" id="chatBody">
+    <div id="chatMessages" class="chatMessages"></div>
+
+    <!-- Chat tools -->
+    <div class="chatTools">
+      <button id="emojiBtn">😊</button>
+      <button id="attachFileBtn">📎</button>
+      <input type="file" id="chatFileInput" accept="image/*" style="display: none;" />
+    </div>
+
+    <input type="text" id="chatInput" class="chatInput" placeholder="Type a message..." />
+  </div>
+</div>
+
+
+
+
+<center>
+  <div id="addResourceForm" class="hidden center-form">
+  <h3>Add Resource</h3>
+  <form id="resourceForm">
+    
+    <input type="text" id="resTitle" placeholder="Title" required><br>
+    
+    <textarea id="resDesc" placeholder="Description" required></textarea><br>
+    
+    <!-- Replace URL with file input for resource (PDF or video) -->
+    <label>Upload PDF or Video</label><br>
+    <input type="file" id="resFile" accept=".pdf,video/*" required><br><br>
+    <!-- Replace URL with file input for thumbnail image -->
+
+    <label>Thumbnail URL</label><br>
+    <input type="text" id="resThumbURL" placeholder="https://example.com/image.png" required><br>
+    <img id="previewThumb" style="max-height: 100px; display: none; margin-top: 10px;" /><br><br>
+
+
+
+    <select id="resClass" required>
+      <option value="">Select Class</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select><br><br>
+
+    <input type="text" id="resSubject" placeholder="Subject" required><br><br>
+    <center>
+     <button type="submit">Upload</button>
+     <button type="button" id="cancelUpload">Cancel</button>
+    </center>
+    
+
+  </form>
+  </div>
+
+
+</center>
+ 
+    <div id="appContainer">
+      <aside id="sidebar" class="hidden">
+        <div class="section-title">Classes</div>
+        <ul id="classList">
+          <li><label><input type="checkbox" data-class="6" /> 6th Grade</label></li>
+          <li><label><input type="checkbox" data-class="7" /> 7th Grade</label></li>
+          <li><label><input type="checkbox" data-class="8" /> 8th Grade</label></li>
+          <li><label><input type="checkbox" data-class="9" /> 9th Grade</label></li>
+          <li><label><input type="checkbox" data-class="10" /> 10th Grade</label></li>
+        </ul>
+
+        <div class="section-title">Subjects</div>
+        <ul id="subjectList">
+          <li><label><input type="checkbox" data-subject="Mathematics" /> Mathematics</label></li>
+          <li><label><input type="checkbox" data-subject="Science" /> Science</label></li>
+          <li><label><input type="checkbox" data-subject="English" /> English</label></li>
+          <li><label><input type="checkbox" data-subject="History" /> History</label></li>
+          <li><label><input type="checkbox" data-subject="Hindi" /> Hindi</label></li>
+          <li><label><input type="checkbox" data-subject="Telugu" /> Telugu</label></li>
+        </ul>
+        <button id="filterBtn">Apply Filters</button>
+      </aside>
+
+      <main id="mainContent">
+        <section id="resourcesGrid" class="resources-grid"></section>
+      </main>
+
+      <div id="resourceViewer" class="resource-viewer hidden">
+        <div class="viewer-content">
+          <div class="viewer-header">
+            <h3 id="viewerTitle">Resource Viewer</h3>
+            <button class="close-viewer">&times;</button>
+          </div>
+          <div class="viewer-body" id="viewerBody"></div>
+        </div>
+      </div>
+    </div>
+
+    <nav id="dashboard" class="hidden">
+      <button id="closeDashboardBtn">← Back</button>
+      <h2>User Dashboard</h2>
+      <div class="dashboard-nav">
+        <button class="dashboard-tab" data-tab="profile">👤Profile</button>
+        <button id="addContentBtn">➕Add Content</button>
+        <button class="dashboard-tab" data-tab="bookmarks">📌Bookmarks</button>
+        <button class="dashboard-tab" data-tab="bin">🗑️ Bin</button>
+
+        <button class="dashboard-tab" data-tab="progress">📊Progress</button>
+        <button class="dashboard-tab" data-tab="settings">⚙️Settings</button>
+      </div>
+      <div id="dashboardContent" class="dashboard-content"></div>
+    </nav>
+  </section>
+
+  <footer>&copy; 2025 Student Learning Hub. Empowering education everywhere.</footer>
+  <script src="teacher.js"></script>
+</body>
+</html>
